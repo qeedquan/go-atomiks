@@ -243,6 +243,13 @@ func evPlay(key int) {
 		} else {
 			game.TimeEnd = time.Now().Add(game.PauseTime)
 		}
+	}
+
+	if game.Paused {
+		return
+	}
+
+	switch key {
 	case atom.ESC:
 		newstate = SELECT
 	case atom.LEFT:
@@ -384,6 +391,10 @@ func playUpdate() {
 	g := game
 	c := &g.Cursor
 	l := &g.Loose
+
+	if g.Paused {
+		return
+	}
 
 	if now := time.Now(); now.After(g.TimeEnd) {
 		newstate = TIMEOUT

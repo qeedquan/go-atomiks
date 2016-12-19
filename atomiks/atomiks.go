@@ -396,7 +396,7 @@ func playUpdate() {
 		return
 	}
 
-	if now := time.Now(); now.After(g.TimeEnd) {
+	if now := time.Now(); now.After(g.TimeEnd) && !conf.NoLose {
 		newstate = TIMEOUT
 	}
 

@@ -138,7 +138,7 @@ func loadSheet(conf *Config, name string, width, height int, sheet []*image.RGBA
 
 func loadImage(conf *Config, name string) *image.RGBA {
 	name = filepath.Join(conf.Assets, "img", name)
-	rgba, err := imageutil.LoadFile(name)
+	rgba, err := imageutil.LoadRGBAFile(name)
 	ck(err)
 	return rgba
 }
